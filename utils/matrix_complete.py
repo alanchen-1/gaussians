@@ -95,10 +95,6 @@ def run_mcmc(samples : int, r : np.array, beta : float) -> np.array:
         P_beta += to_add
     
     P_beta /= samples
-
-    converted = list(s_cur)
-    print(converted.count(1))
-    print(converted.count(-1))
     return P_beta
         
 ##################
@@ -115,3 +111,18 @@ def create_P0(r : np.array) -> np.array:
     """
     return np.diag(r ** 2, k=0)
 
+#################
+#   SAMPLING    #
+#################
+def sample_cov(cov : np.array, samples : int) -> np.array:
+    """
+    Samples from a multivariate normal distribution with covariance given by <cov>.
+        Parameters:
+            cov (np.array) : covariance matrix to use
+            samples (int) : number of samples to take
+        Returns:
+            rv (np.array) : randomly sampled vectors
+    """
+    n = len(cov)
+    rv = np.random.multivariate_normal(np.zeros(n), cov, samples)
+    return rv
