@@ -17,10 +17,10 @@ def random_matrix_goe(n : int) -> np.array:
     for i in range(n):
         for j in range(i, n):
             if i == j:
-                X[i][j] = np.random.normal(0, 1/n)
+                X[i][j] = np.random.normal(0, 2/n)
             else:
-                X[i][j] = np.random.normal(0, 1/(2*n))
-                X[j][i] = np.random.normal(0, 1/(2*n))
+                X[i][j] = np.random.normal(0, 1/n)
+                X[j][i] = np.random.normal(0, 1/n)
     return X
 
 def random_matrix_wishart(n : int, m: int) -> np.array:
